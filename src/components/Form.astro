@@ -20,11 +20,14 @@
 </style>
 
 <script>
+  // @ts-ignore
   document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Get the input elements
+    // @ts-ignore
     const nameInput = document.getElementById('name') as HTMLInputElement;
+    // @ts-ignore
     const messageInput = document.getElementById('message') as HTMLInputElement;
 
     // Ensure they are of correct types
