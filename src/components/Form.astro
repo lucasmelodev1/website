@@ -1,0 +1,38 @@
+<form id="contactForm" class="flex flex-col gap-4 p-8 border border-border rounded-2xl">
+  <div class="flex flex-col gap-2">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+  <div class="flex flex-col gap-2 mb-8">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+  <button class="py-3 px-5 text-sm hover:opacity-75 rounded-md transition bg-white text-[#13151a]" type="submit">Send</button>
+</form>
+
+<style>
+  input, textarea {
+    margin: 0;
+    background-color: #23262d;
+    border-radius: 0.5rem;
+    padding: .7rem 1.1rem;
+  }
+</style>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get the input elements
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const messageInput = document.getElementById('message') as HTMLInputElement;
+
+    // Ensure they are of correct types
+    const name = nameInput.value;
+    const message = messageInput.value;
+
+    const mailtoLink = `mailto:your-email@example.com?subject=${encodeURIComponent(name)} Form Submission&body=${encodeURIComponent(message)}`;
+
+    window.location.href = mailtoLink;
+  });
+</script>

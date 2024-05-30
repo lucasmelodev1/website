@@ -1,0 +1,16 @@
+---
+import NavButton from './NavButton.astro';
+import { MAX_CONTENT_WIDTH_CLASS } from '../consts/sizes';
+---
+
+<header class="z-10 h-24 p-4 border-b border-border w-full fixed top-0 flex justify-center bg-[#13151a]">
+  <div class=`flex justify-center sm:justify-between items-center w-full h-full ${MAX_CONTENT_WIDTH_CLASS}`>
+    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#1c1e24', 'U7U4YQBT5');kofiwidget2.draw();</script>
+    <nav class="flex gap-2">
+      <div class="hidden sm:block">
+        <NavButton selected={true} href="#home" title="Website"/>
+      </div>
+      {/*<NavButton href="https://lucasmelo.dev/blog" title="My Blog" />*/}
+    </nav>
+  </div>
+</header>

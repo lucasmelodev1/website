@@ -1,0 +1,15 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  selected?: boolean;
+}
+
+const { href, title, selected } = Astro.props;
+---
+
+<a href={href}>
+  <button class=`py-3 px-5 text-sm hover:text-gray-500 rounded-md transition ${selected ? "bg-[#13151a] brightness-125" : ""}`>
+    {title}
+  </button>
+</a>

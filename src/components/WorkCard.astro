@@ -1,0 +1,33 @@
+---
+interface Tool {
+  src: string;
+  alt: string;
+}
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  toolsSrc: Tool[];
+  imageSrc: string;
+  inverted?: boolean;
+}
+
+const { title, description, imageSrc, toolsSrc, inverted, subtitle } = Astro.props;
+---
+
+<div class=`
+  ${inverted ? "md:flex-row-reverse" : "md:flex-row"}
+  ${inverted ? "self-end" : "self-start"}
+  flex flex-col items-center gap-8 p-8 border border-border rounded-2xl bg-[#13151a] hover:border-white hover:scale-105 hover:brightness-125 transition-all max-w-[800px]
+`>
+    <img class="opacity-75 w-48 h-48 text-white" src={imageSrc} alt="icon"/>
+    <div class=`flex flex-col gap-2`>
+      <h3 class=`${inverted ? "text-right" : "text-left"}`>{title}</h3>
+      {subtitle && <h5 class=`${inverted ? "text-right" : "text-left"}`>{subtitle}</h5>}
+      <div class=`w-full flex gap-2 items-center ${inverted ? "justify-end" : "justify-start"}`>
+        <span class="text-sm">Tools: </span>{toolsSrc.map(toolSrc => <img class="w-7 h-7" src={toolSrc.src} alt={toolSrc.alt}/>)}
+      </div>
+      <hr class="border-b border-border"/>
+      <p class=`${inverted ? "text-right" : "text-left"} text-lg text-[#aaaaaa]`>{description}</p>
+    </div>
+</div>

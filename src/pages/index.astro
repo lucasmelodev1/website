@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HomeNavCard from '../components/HomeNavCard.astro';
+import WorkCard from '../components/WorkCard.astro';
+import Form from '../components/Form.astro';
+import { MAX_CONTENT_WIDTH_CLASS } from '../consts/sizes';
+---
+
+<Layout title="Lucas Gabriel">
+  <div class="bg flex flex-col justify-center w-full items-center">
+    <main id="home" class="h-[95dvh] w-full flex justify-center items-center p-4">
+      <div class=`w-full flex flex-col gap-10 lg:flex-row justify-between items-center max-w-[1100px]`>
+        <div class="flex flex-col gap-2 items-center text-center lg:items-start">
+          <h1 class="text-6xl">Lucas Gabriel</h1>
+          <h3 class="text-gray-400 font-thin">Software Engineer</h3>
+        </div>
+        <aside class="flex flex-col md:flex-row lg:flex-col gap-4">
+          <HomeNavCard title="About" description="Interests and experience" iconSrc="user-square.svg" href="#about"/>
+          <HomeNavCard title="Work" description="Projects and accomplishments" iconSrc="box.svg" href="#work"/>
+          <HomeNavCard title="Contact" description="Let's get in touch" iconSrc="sms-edit.svg" href="#contact"/>
+        </aside>
+      </div>
+    </main>
+    <section id="about" class=`bg-[#15171c] w-full flex flex-col items-center px-4 py-16 border-y border-border`>
+      <div class="flex gap-12 flex-col items-center justify-center w-full max-w-[1100px]">
+        <h1>About</h1>
+        <div class="flex gap-16 items-center justify-center lg:justify-between w-full">
+          <p class="w-full max-w-[600px] text-center lg:text-left">
+          I'm Lucas, I work as software engineer and I am passionate about psychology, computers and education.
+          When talking to beginners in the coding field, they often find what I have to say useful, which motivated me to start this website.
+          <br/><br/>
+          I am what they call "chronically online", which means I have knowledge in a lot of areas in the computer space, like programming,
+          linux, speed typing, and similar topics.
+          </p>
+          <aside class="w-full max-w-[300px] hidden lg:block">
+            <img class="w-full rounded-lg" src="about-me-photo.png"/>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section id="work" class="w-full flex px-4 py-16 items-center justify-center">
+      <div class="w-full max-w-[1400px] flex flex-col items-center gap-12">
+        <h1>Work</h1>
+        <div class="w-full flex flex-col gap-8">
+          <WorkCard 
+            title="Assembler for MIPS processor"
+            description=`
+                Given the challenge to build a MIPS processor instructions assembler, I decided to build it with Rust.
+                Rust is an insanely fast programming language and, different than C or C++, it has compile-time memory
+                safety by default. Despite its complexity, the decision of Rust was heavily because of its complex type
+                system, which I could rely to create any kind of abstraction needed to create reusable and readable code.
+            `
+            imageSrc="vector.svg"
+            toolsSrc={
+              [
+                {
+                  src: "rust-plain-white.svg",
+                  alt: "Rust",
+                },
+                {
+                  src: "bash-plain-white.svg",
+                  alt: "Git",
+                },
+                {
+                  src: "git-plain.svg",
+                  alt: "Git",
+                },
+              ]
+            }
+          />
+          <WorkCard 
+            title="My Rust Crates"
+            inverted={true}
+            subtitle="Downloads: 1.1K+"
+            description=` 
+            After falling in love with the language, I started using it for every CLI tool I needed to build. 
+            What I didn't know was that people would find my crates useful, and I got quite a few downloads on
+            them. The 2 crates that I currently have published are flag-parser for CLI flag parsing and 
+            stirling-approximation to approximate a factorial with Stirling's approximation.
+            `
+            imageSrc="rust-crate.png"
+            toolsSrc={
+              [
+                {
+                  src: "rust-plain-white.svg",
+                  alt: "Rust",
+                },
+                {
+                  src: "git-plain.svg",
+                  alt: "Git",
+                },
+              ]
+            }
+          />
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="w-full flex px-4 py-16 items-center justify-center border-y border-border bg-[#15171c]">
+      <div class="w-full max-w-[1400px] flex flex-col items-center gap-12">
+        <div class="flex flex-col items-center">
+          <h1>Contact</h1>
+          <div class="flex gap-2">
+            <img src="sms-edit.svg" alt="email icon"/>
+            <h5>contact@lucasmelo.dev</h5>
+          </div>
+        </div>
+        <div class="w-full max-w-[800px]">
+            <Form />
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .bg {
+    --s: 50px;
+  --c: #13151a;
+  --_s: calc(2*var(--s)) calc(2*var(--s));
+  --_g: 35.36% 35.36% at;
+  --_c: #0000 66%,#15171c 68% 70%,#0000 72%;
+  background: 
+    radial-gradient(var(--_g) 100% 25%,var(--_c)) var(--s) var(--s)/var(--_s), 
+    radial-gradient(var(--_g) 0 75%,var(--_c)) var(--s) var(--s)/var(--_s), 
+    radial-gradient(var(--_g) 100% 25%,var(--_c)) 0 0/var(--_s), 
+    radial-gradient(var(--_g) 0 75%,var(--_c)) 0 0/var(--_s), 
+    repeating-conic-gradient(var(--c) 0 25%,#0000 0 50%) 0 0/var(--_s), 
+    radial-gradient(var(--_c)) 0 calc(var(--s)/2)/var(--s) var(--s) var(--c);
+  background-attachment: fixed;
+  }
+</style>
